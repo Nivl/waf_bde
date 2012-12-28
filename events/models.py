@@ -10,7 +10,6 @@ class Event(models.Model):
 
     poster = models.ImageField(
         upload_to='events/posters/',
-        max_length=255,
         blank=True,
         null=True,
         verbose_name=u'affiche')
