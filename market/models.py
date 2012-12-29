@@ -10,7 +10,8 @@ class Product(models.Model):
 
     image = models.ImageField(
         upload_to='market/products/',
-        verbose_name=u'image')
+        verbose_name=u'image',
+        help_text='Résolution : 350x200')
 
     description = models.TextField(
         verbose_name=u'description')
