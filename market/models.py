@@ -22,8 +22,7 @@ class Product(models.Model):
     quantity = models.PositiveIntegerField(
         default=0,
         verbose_name=u'quantité',
-        help_text=u'0 = infinie'
-        )
+        help_text=u'0 = infinie')
 
     def __unicode__(self):
         return self.name
@@ -31,3 +30,4 @@ class Product(models.Model):
     class Meta:
         verbose_name = u'Produit'
         verbose_name_plural = u'Produits'
+        ordering = ['-pk']
