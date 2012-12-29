@@ -1,0 +1,53 @@
+- extends "base.haml"
+- load compressed staticfiles
+- load url from future
+
+- block "local_css"
+  - compressed_css 'main'
+
+- block "body"
+
+  %header
+      #navbar.navbar.navbar-inverse.navbar-fixed-top
+        .navbar-inner
+          .container
+
+            %a.btn.btn-navbar{'data-toggle': "collapse", 'data-target': ".nav-collapse"}
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+
+            %a.brand{'href': '{% url "home" %}'}<
+                W.A.F. BDE
+
+            .nav-collapse
+              %ul#navbar-main-list.nav.pull-right
+                %li#navbar-blog{'class': '{% block "menu-blog" %}{% endblock %}'}
+                  %a{'href' : '#events'}<
+                    Évènements
+
+                %li#navbar-lab{'class': '{% block "menu-lab" %}{% endblock %}'}
+                  %a{'href' : '#market'}<
+                    Boutique
+
+                %li#navbar-about{'class': '{% block "menu-about" %}{% endblock %}'}
+                  %a{'href'      : '#poll'}<
+                    Sondages
+
+                %li#navbar-contact{'class': '{% block "menu-video" %}{% endblock %}'}
+                  %a{'href'       : '#video'}<
+                    Vidéos
+
+                %li#navbar-contact{'class': '{% block "menu-photo" %}{% endblock %}'}
+                  %a{'href'       : '#Photos'}<
+                    Photos
+
+                %li#navbar-contact{'class': '{% block "menu-contact" %}{% endblock %}'}
+                  %a{'href'       : '#contact'}<
+                    Contact
+
+  .container
+      - block "body-content"
+
+  - block "footer"
+    - include "inc/footer.haml"

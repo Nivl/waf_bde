@@ -1,0 +1,29 @@
+- load url from future
+- load staticfiles compressed
+
+!!! 5
+%html{'lang': 'fr'}
+    %head
+        %meta{'charset': 'utf-8'}
+        %title<
+            - block "title"
+                W.a.f. BDE, le site du BDE D'Epitech Montpellier
+        %meta{'name'    : 'viewport',
+              'content' : 'width=device-width, initial-scale=1.0'}
+
+        - block "local_css"
+        - block "head_link"
+
+        %script{'src': "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"}
+        /[if lt IE 9]>
+            %script{'src': '{% static "commons/js/html5shiv.js" %}'}
+
+    %body{'itemscope': None, 'itemtype': 'http://schema.org/WebPage'}
+        #body
+            - block "body"
+
+        %script
+            var STATIC_URL="{% static "" %}";
+
+            - compressed_js 'main'
+        - block "app_js"

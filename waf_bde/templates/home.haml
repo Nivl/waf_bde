@@ -1,0 +1,73 @@
+- extends 'base_common.haml'
+
+- block "body-content"
+    .hero-unit
+        %h1<
+            W.A.F. BDE
+        %p<
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pharetra erat a arcu molestie volutpat. Quisque in ante nisl. Ut ac sapien lorem, ac placerat tellus. Fusce vitae purus massa, eu tempus augue. Nam fringilla aliquet placerat. Vestibulum velit lectus, luctus id iaculis luctus, molestie id metus. Integer aliquet diam.
+        %p.btn.btn-primary.btn-large<
+            Learn more &raquo;
+
+    %section
+        %h2<
+            Derniers produits
+
+        - with products.all as prods
+            - if prods
+                .row
+                     %ul.thumbnails
+                        - for product in prods
+                            .span4
+                                .thumbnail
+                                    %img{'src': '{{ product.image.url }}'}
+                                    .caption
+                                        %h3.text-center<
+                                            {{ product.name }}
+                                        %p<
+                                            {{product.description }}
+
+                                        %p
+                                            %strong<
+                                                Prix
+                                            :
+                                            - if product.price > 0
+                                                {{ product.price }}€
+                                            - else
+                                                Gratuit
+
+                                            - if product.quantity > 0
+                                                %br
+                                                %strong<
+                                                    Quantité
+                                                : {{ product.quantity }}
+
+
+            - else
+                Aucun produit n'est actuellement disponible.
+
+    %section
+        %h2<
+            Derniers sondages
+
+        - with polls.all as all_polls
+            - if all_polls
+                .row
+                    - for poll in all_polls
+                        .span4
+                            %img{'src': '{{ poll }}'}
+            - else
+                Aucun sondage n'est actuellement disponible.
+
+
+    %section
+        %h2<
+            Derniers évènements
+
+        - with events.all as all_events
+            - if all_events
+                .row
+                    - for event in all_events
+                        .span4
+            - else
+                Il n'y a aucun évènement de prévu pour le moment.
