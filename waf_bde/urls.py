@@ -7,7 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
 
     url(r'^$', 'waf_bde.views.home', name='home'),
-    # url(r'^waf_bde/', include('waf_bde.foo.urls')),
+    url(r'^market/', include('market.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
 

@@ -1,0 +1,40 @@
+- extends 'base_common.haml'
+
+- block "body-content"
+    - with products.all as prods
+        - for product in prods
+            - if forloop.counter0|divisibleby:3
+                <div class="row">
+                <ul class="thumbnails">
+
+            .span4
+                .thumbnail
+                    %img{'src': '{{ product.image.url }}'}
+                    .caption
+                        %h3.text-center<
+                            {{ product.name }}
+                        %p<
+                            {{product.description }}
+
+                        %p
+                            %strong<
+                                Prix
+                            :
+                            - if product.price > 0
+                                {{ product.price }}€
+                            - else
+                                Gratuit
+
+                            - if product.quantity > 0
+                                %br
+                                %strong<
+                                    Quantité
+                                : {{ product.quantity }}
+
+            - if forloop.counter|divisibleby:3 or forloop.last
+                </ul>
+                </div>
+
+
+        - empty
+            Aucun produit n'est actuellement disponible.
