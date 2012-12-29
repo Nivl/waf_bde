@@ -10,6 +10,9 @@ class Poll(models.Model):
         max_length=255,
         verbose_name=u'nom')
 
+    def __unicode__(self):
+        return self.name
+
     class Meta:
         ordering = ['-pub_date']
         verbose_name = u'Sondage'
@@ -32,6 +35,9 @@ class Choice(models.Model):
     votes = models.PositiveIntegerField(
         default=0,
         verbose_name=u'votes')
+
+    def __unicode__(self):
+        return self.poll.__unicode__()
 
     class Meta:
         ordering = ['order']

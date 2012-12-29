@@ -33,6 +33,9 @@ class Event(models.Model):
         verbose_name=u'description',
         help_text=u'Markdown activé')
 
+    def __unicode__(self):
+        return self.name
+
     class Meta:
         ordering = ['-start_date']
         verbose_name = u'Évènement'

@@ -25,6 +25,9 @@ class Product(models.Model):
         help_text=u'0 = infinie'
         )
 
+    def __unicode__(self):
+        return self.name
+
     class Meta:
         verbose_name = u'Produit'
         verbose_name_plural = u'Produits'
