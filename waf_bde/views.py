@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.core.mail import send_mail
+from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from market.models import Product
 from events.models import Event
@@ -7,6 +8,7 @@ from polls.models import Poll
 from forms import ContactForm
 
 
+@login_required
 def home(request):
     infos = {}
     infos['products'] = Product.objects.all()[:3]
@@ -15,6 +17,7 @@ def home(request):
     return render(request, 'home.haml', infos)
 
 
+@login_required
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)

@@ -1,0 +1,16 @@
+- extends "base_common.haml"
+
+- load bootstrap
+- load url from future
+
+- block "body-content"
+    %form.form-signin{'method': 'post'}
+            %h2.form-signin-heading<
+                Please sign in
+
+            - csrf_token
+
+            {{ form|bootstrap }}
+
+            %button.btn.btn-large.btn-primary{'type': 'submit'}<
+                Sign in
