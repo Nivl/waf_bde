@@ -10,9 +10,8 @@ class Event(models.Model):
 
     poster = models.ImageField(
         upload_to='events/posters/',
-        blank=True,
-        null=True,
-        verbose_name=u'affiche')
+        verbose_name=u'affiche',
+        help_text=u'350x500')
 
     start_date = models.DateTimeField(
         verbose_name=u'date de debut')

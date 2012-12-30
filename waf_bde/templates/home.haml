@@ -1,5 +1,7 @@
 - extends 'base_common.haml'
 
+- load markup
+
 - block "body-content"
     .hero-unit
         %h1<
@@ -25,7 +27,7 @@
                                         %h3.text-center<
                                             {{ product.name }}
                                         %p<
-                                            {{product.description }}
+                                            {{ product.description|markdown:'safe' }}
 
                                         %p
                                             %strong<
@@ -62,12 +64,49 @@
 
     %section
         %h2<
-            Derniers évènements
+            Dernier évènement
 
-        - with events.all as all_events
-            - if all_events
-                .row
-                    - for event in all_events
-                        .span4
-            - else
-                Il n'y a aucun évènement de prévu pour le moment.
+        - for event in events.all
+            .row
+                .span12
+                    .event
+                        %header
+                            %img{'src': '{{ event.poster.url }}'}
+
+                            .infos
+                                %h3.text-center<
+                                    {{ event.name }}
+
+                                %p<
+                                    %strong
+                                        Début
+                                    : le {{ event.start_date|date:'l d F Y' }} à {{ event.start_date|date:'G\hi' }}
+                                    %br
+                                    %strong
+                                       Fin
+                                    :  le {{ event.end_date|date:'l d F Y' }} à {{ event.end_date|date:'G\hi' }}
+
+                                    %br
+                                    %strong<
+                                        Prix
+                                    :
+                                    - if event.price > 0
+                                        {{ event.price }}€
+                                    - else
+                                        Gratuit
+
+                                    %br
+
+                                    %strong<
+                                        Places
+                                    :
+                                    - if event.nb_places > 0
+                                        {{ event.nb_places }}
+                                    - else
+                                        Illimité
+
+                                %p<
+                                    {{ event.description|markdown:'safe' }}
+
+        - empty
+            Aucun évènement n'est actuellement en préparation.

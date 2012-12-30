@@ -8,6 +8,7 @@ urlpatterns = patterns('',
 
     url(r'^$', 'waf_bde.views.home', name='home'),
     url(r'^market/', include('market.urls')),
+    url(r'^events/', include('events.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
 

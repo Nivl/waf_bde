@@ -23,7 +23,7 @@
             .nav-collapse
               %ul#navbar-main-list.nav.pull-right
                 %li#navbar-blog{'class': '{% block "menu-blog" %}{% endblock %}'}
-                  %a{'href' : '#events'}<
+                  %a{'href' : '{% url "event-list" %}'}<
                     Évènements
 
                 %li#navbar-lab{'class': '{% block "menu-lab" %}{% endblock %}'}

@@ -1,0 +1,55 @@
+- extends 'base_common.haml'
+
+- load markup
+
+- block "body-content"
+
+    %h1.text-center<
+        Évènements
+
+    - for event in events.all
+        .row.clearfix
+            .span12
+                .event
+                    %header
+                        %img.img-polaroid{'src': '{{ event.poster.url }}'}
+
+                        .infos
+                            %h3.text-center<
+                                {{ event.name }}
+
+                            %p<
+                                %strong
+                                    Début
+                                : le {{ event.start_date|date:'l d F Y' }} à {{ event.start_date|date:'G\hi' }}
+                                %br
+                                %strong
+                                   Fin
+                                :  le {{ event.end_date|date:'l d F Y' }} à {{ event.end_date|date:'G\hi' }}
+
+                                %br
+                                %strong<
+                                    Prix
+                                :
+                                - if event.price > 0
+                                    {{ event.price }}€
+                                - else
+                                    Gratuit
+
+                                %br
+
+                                %strong<
+                                    Places
+                                :
+                                - if event.nb_places > 0
+                                    {{ event.nb_places }}
+                                - else
+                                    Illimité
+
+                            %p<
+                                {{ event.description|markdown:'safe' }}
+        - if not forloop.last
+            %hr
+
+    - empty
+        Aucun évènement n'est actuellement en préparation.
