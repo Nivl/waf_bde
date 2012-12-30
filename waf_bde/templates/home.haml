@@ -1,6 +1,7 @@
 - extends 'base_common.haml'
 
 - load markup
+- load url from future
 
 - block "body-content"
     .hero-unit
@@ -8,8 +9,8 @@
             W.A.F. BDE
         %p<
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pharetra erat a arcu molestie volutpat. Quisque in ante nisl. Ut ac sapien lorem, ac placerat tellus. Fusce vitae purus massa, eu tempus augue. Nam fringilla aliquet placerat. Vestibulum velit lectus, luctus id iaculis luctus, molestie id metus. Integer aliquet diam.
-        %p.btn.btn-primary.btn-large<
-            Learn more &raquo;
+        %a.btn.btn-primary.btn-large{'href': '{% url "contact" %}'}<
+            Nous contacter
 
     %section
         %h2<

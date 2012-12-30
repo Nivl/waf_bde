@@ -14,3 +14,9 @@ section {
 .event .infos ul {
   margin-left: 415px;
 }
+.bigger-fields input,
+.bigger-fields textarea,
+.bigger-fields select,
+.bigger-fields .uneditable-input {
+  width: 320px;
+}

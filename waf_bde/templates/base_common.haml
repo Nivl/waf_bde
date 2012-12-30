@@ -34,16 +34,8 @@
                   %a{'href'      : '#poll'}<
                     Sondages
 
-                %li#navbar-contact{'class': '{% block "menu-video" %}{% endblock %}'}
-                  %a{'href'       : '#video'}<
-                    Vidéos
-
-                %li#navbar-contact{'class': '{% block "menu-photo" %}{% endblock %}'}
-                  %a{'href'       : '#Photos'}<
-                    Photos
-
                 %li#navbar-contact{'class': '{% block "menu-contact" %}{% endblock %}'}
-                  %a{'href'       : '#contact'}<
+                  %a{'href'       : '{% url "contact" %}'}<
                     Contact
 
   .container

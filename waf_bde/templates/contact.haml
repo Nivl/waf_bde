@@ -1,0 +1,31 @@
+- extends 'base_common.haml'
+
+- load url from future
+- load bootstrap
+
+- block "body-content"
+
+    .row
+        .span8.offset2
+
+            %h1.text-center<
+                Contact
+
+            - block "message_sent"
+
+
+            %form{'method'  : 'post',
+                  'class'   : 'form-horizontal bigger-fields',
+                  'action'  : '{% url "contact" %}'}
+
+                - csrf_token
+
+                {{ form|bootstrap }}
+
+                .form-actions
+                    %button.btn.btn-primary{'type'              : 'submit',
+                                            'data-loading-text' : 'Envoie...'}
+                        Envoyer
+                    %button.btn.btn-danger{'type'               : 'reset',
+                                           'data-storage-reset' : 'contact-message'}
+                        Effacer
