@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
+from crowdsourcing.models import Survey
 from django.conf import settings
 from market.models import Product
 from events.models import Event
-from polls.models import Poll
 from forms import ContactForm
 
 
@@ -13,8 +13,16 @@ def home(request):
     infos = {}
     infos['products'] = Product.objects.all()[:3]
     infos['events'] = Event.objects.all()[:1]
-    infos['polls'] = Poll.objects.all()[:3]
     return render(request, 'home.haml', infos)
+
+
+@login_required
+def survey(request):
+    survey = None
+    surveys = Survey.live.order_by('-survey_date')
+    if surveys:
+        survey = surveys[0]
+    return render(request, 'survey.haml', {'survey': survey})
 
 
 @login_required

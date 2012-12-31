@@ -1,0 +1,10 @@
+{% load crowdsourcing %}
+
+{% thanks_for_entering request forms survey %}
+
+{% if not entered or not valid %}
+  {% for form in forms %}
+    {{ form.as_p }}
+  {% endfor %}
+  <input type="submit" value="Submit" />
+{% endif %}

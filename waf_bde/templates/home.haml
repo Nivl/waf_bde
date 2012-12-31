@@ -1,6 +1,6 @@
 - extends 'base_common.haml'
 
-- load markup
+- load markup crowdsourcing
 - load url from future
 
 - block "body-content"
@@ -48,19 +48,6 @@
 
             - else
                 Aucun produit n'est actuellement disponible.
-
-    %section
-        %h2<
-            Derniers sondages
-
-        - with polls.all as all_polls
-            - if all_polls
-                .row
-                    - for poll in all_polls
-                        .span4
-                            %img{'src': '{{ poll }}'}
-            - else
-                Aucun sondage n'est actuellement disponible.
 
 
     %section

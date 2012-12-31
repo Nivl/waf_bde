@@ -1,0 +1,16 @@
+ - extends 'base_common.haml'
+
+- load markup crowdsourcing
+- load url from future
+
+- block "menu-events"
+    active
+
+- block "body-content"
+    #latest_survey_div
+
+    - if survey
+        %script<
+            loadSurvey('{{ survey.slug }}', 'latest_survey_div');
+    - else
+        Il n'y a aucun sondage pour l'instant

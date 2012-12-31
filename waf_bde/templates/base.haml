@@ -18,12 +18,12 @@
         /[if lt IE 9]>
             %script{'src': '{% static "commons/js/html5shiv.js" %}'}
 
-    %body{'itemscope': None, 'itemtype': 'http://schema.org/WebPage'}
-        #body
-            - block "body"
-
         %script
             var STATIC_URL="{% static "" %}";
 
-            - compressed_js 'main'
+        - compressed_js 'main'
         - block "app_js"
+
+    %body{'itemscope': None, 'itemtype': 'http://schema.org/WebPage'}
+        #body
+            - block "body"

@@ -71,3 +71,6 @@ section {
   margin-bottom: 15px;
   padding: 7px 9px;
 }
+#latest_survey_div ul {
+  list-style-type: none;
+}

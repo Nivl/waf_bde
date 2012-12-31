@@ -1,7 +1,4 @@
-from django.conf.urls import patterns, include, url
-from django.contrib import admin
-
-admin.autodiscover()
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('events.views',
     url(r'^$', 'event_list', name='event-list'),
