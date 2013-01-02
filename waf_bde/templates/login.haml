@@ -6,11 +6,17 @@
 - block "body-content"
     %form.form-signin{'method': 'post'}
             %h2.form-signin-heading<
-                Please sign in
+                Connexion
+
+            .alert.alert-info
+                Utilisez le pass
+                %strong<
+                    UNIX
+                pour vous connecter
 
             - csrf_token
 
             {{ form|bootstrap }}
 
             %button.btn.btn-large.btn-primary{'type': 'submit'}<
-                Sign in
+                Connexion
